@@ -18,11 +18,16 @@ class Com extends React.Component {
       })
     })
   }
+  goBack () {
+    this.props.history.go(-1)
+  }
   render () {
     return (
       <div className = 'container'>
         <div className = 'box'>
-          <header className = 'header'>详情头部</header>
+          <header className = 'header'>
+            <button onClick = { this.goBack.bind(this) } >返回</button>
+            详情头部</header>
           <section className = 'content'>
           { this.state.title }
           </section>
