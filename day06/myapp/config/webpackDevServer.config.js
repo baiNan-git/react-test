@@ -100,5 +100,14 @@ module.exports = function(proxy, allowedHost) {
       // https://github.com/facebook/create-react-app/issues/2272#issuecomment-302832432
       app.use(noopServiceWorkerMiddleware());
     },
+    proxy: {
+      '/api': {
+        target: 'http://www.17mmm.cn',
+        changeOrigin: true,
+        pathRewrite: {
+            '^/api': ''
+        }
+      }
+    }
   };
 };

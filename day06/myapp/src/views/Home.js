@@ -1,6 +1,6 @@
 import React from 'react';
 import Prolist from '@/components/common/Prolist';
-import Banner from '@/components/common/Banner';
+// import Banner from '@/components/common/Banner';
 import { Tabs } from 'antd-mobile';
 
 class Com extends React.Component {
@@ -8,49 +8,49 @@ class Com extends React.Component {
     super(props);
     this.state = {
       prolist: [],
-      bannerlist: [],
+      bannerlist: [1,2],
       tabs: [
-        { title: '1st Tab'},
-        { title: '2st Tab'},
-        { title: '3st Tab'},
-        { title: '4st Tab'},
-        { title: '5st Tab'},
-        { title: '6st Tab'},
-        { title: '7st Tab'},
-        { title: '8st Tab'},
-        { title: '9st Tab'},
+        { title: '精选'},
+        { title: '女装'},
+        { title: '美食'},
+        { title: '男装'},
+        { title: '美妆'},
+        { title: '居家日用'},
+        { title: '鞋品'},
+        { title: '数码家电'},
+        { title: '内衣'},
+        { title: '箱包'},
+        { title: '配饰'},
       ],
       activeIndex: 0
     }
   }
   componentDidMount () {
-    fetch('http://www.daxunxun.com/douban').then(res => res.json()).then(data => {
-      this.setState({
-        prolist: data
-      })
-    })
     fetch('http://www.daxunxun.com/banner').then(res => res.json()).then(data => {
       this.setState({
         bannerlist: data
       })
     })
+    fetch('api/index.php?r=index/ajaxnew&page=1').then(res => res.json()).then(data => {
+      console.log(data.data.data)
+      this.setState({
+        prolist: data.data.data
+      })
+    })
   }
-  renderContent (tab) {
-    return (
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
-        <p>Content of {tab.title}</p>
-      </div>
-    )
-    // let ta = ''
-    // this.state.activeIndex === 0 ? ta = <Com1 /> : ''
-    // this.state.activeIndex === 1 ? ta = <Com2 /> : ''
-    // this.state.activeIndex === 2 ? ta = <Com3 /> : ''
-    // this.state.activeIndex === 3 ? ta = <Com4 /> : ''
-    // this.state.activeIndex === 4 ? ta = <Com5 /> : ''
-    // return ta
+  renderContent () {
+    // console.log(this)
+    // return (
+    //   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
+    //     <p>Content of {tab.title}</p>
+    //   </div>
+    // )
+    let ta = <div>还没有数据</div>
+    this.state.activeIndex === 0 ? ta = <Prolist prolist = { this.state.prolist }  { ...this.props } bannerlist = { this.state.bannerlist } { ...this.props }/> : ta = <div></div>;
+    return ta
   }
   ClickTab (tabs, index) {
-    console.log(index)
+    // console.log(index)
     this.setState({
       activeIndex: index
     })
@@ -58,14 +58,28 @@ class Com extends React.Component {
   render () {
     return(
       <div className="box">
-        <header className="header">首页头部</header>
+        <header className="header">
+          <div className='search'>
+            <span className = 'iconfont icon-xiazai17'></span>
+            <p>输入您需要的商品名称</p>
+          </div>
+          <div className='cartshop'>
+            <span className = 'iconfont icon-gouwuche'></span>
+          </div>
+        </header>
         <section className="content">
-          <Tabs tabs={this.state.tabs} onChange = {this.ClickTab.bind(this) } onTabClick = { this.ClickTab.bind(this) }
-          renderTabBar={props => <Tabs.DefaultTabBar {...props} page={3} />}>
-            {this.renderContent}
+          <Tabs tabs={this.state.tabs} 
+          onChange = {this.ClickTab.bind(this) } 
+          onTabClick = { this.ClickTab.bind(this) }
+          tabBarBackgroundColor = '#fff'
+          tabBarActiveTextColor = '#FF1493'
+          tabBarInactiveTextColor = '#666'
+          tabBarUnderlineStyle = 'overline'
+          renderTabBar={props => <Tabs.DefaultTabBar {...props} page={5} />}>
+            {this.renderContent.bind(this)}
           </Tabs>
-          <Banner bannerlist = { this.state.bannerlist }/>
-          <Prolist prolist = { this.state.prolist } { ...this.props }/>
+          {/* <Banner bannerlist = { this.state.bannerlist }/> */}
+          {/* <Prolist prolist = { this.state.prolist } { ...this.props }/> */}
           </section>
       </div>
     )

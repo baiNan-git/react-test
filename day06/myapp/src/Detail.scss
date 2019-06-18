@@ -1,0 +1,73 @@
+@import '@/lib/reset.scss';
+.cont {
+  overflow: auto;
+  .img {
+    img {
+      width: 100%;
+      height: 0.5rem;
+    }
+    .tou {
+      width: 100%;
+      height: 3rem;
+    }
+  }
+  .cont-c {
+    padding: 0 0.1rem;
+    .tianmao-1 {
+      font: 300 0.16rem/0.5rem "";
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      span {
+        font: 400 0.12rem/0.5rem "";
+        border: 1px solid #FC3F78;
+        color: #FC3F78;
+        padding: 0 0.05rem;
+      }
+    }
+    .money {
+      overflow: hidden;
+      line-height: 0.3rem;
+      .juanhou {
+        float: left;
+        color: #FC4D52;
+        font-size: 0.14rem;
+      }
+      .yishou {
+        font-size: 0.12rem;
+        color: #666;
+        float: right;
+      }
+    }
+    .num {
+      font: 0.12rem/0.18rem "";
+      .tianmao {
+        color: #999;
+      }
+    }
+    .img1 {
+      margin-bottom: 0.5rem;
+      img{
+        width: 100%;
+        height: 0.7rem;
+      }
+      span {
+        font: 0.12rem/0.18rem "";
+        color: #999;
+      }
+      .guanggao {
+        margin-top: 0.2rem;
+        width: 100%;
+        height: 4.8rem;
+      }
+    }
+  }
+}
+.icon-fanhui {
+  @include flexbox();
+  position: fixed;
+  top: 0.1rem;
+  left: 0.1rem;
+  font-size: 0.24rem;
+  color: #8A2BE2;
+}

@@ -1,0 +1,78 @@
+@import '@/lib/reset.scss';
+.prolist {
+  overflow: hidden;
+  @include rect(100%,100%);
+  li {
+    border-bottom: 0.01rem solid #ccc;
+    overflow: hidden;
+    padding: 0.1rem;
+    .img {
+      float: left;
+      img {
+        width: 1.12rem;
+        height: 1.12rem;
+      }
+    }
+    .cent {
+      float: left;
+      margin-left: 0.1rem;
+      h4 {
+        width: 1.74rem;
+        font: 400 0.16rem/0.2rem "";
+      }
+      .num {
+        overflow: hidden;
+        margin-top: 0.2rem;
+        color: #999;
+        font-size: .12rem;
+        .tianmao  {
+          float: left;
+        }
+        .yishou {
+          float: right;
+        }
+      }
+      .money {
+        overflow: hidden;
+        color: #f66;
+        margin-top: 0.1rem;
+        .juanhou {
+          float: left;
+        }
+        .juan {
+          float: right;
+        }
+      }
+    }
+  }
+}
+.guanggao {
+  @include rect(100%,1rem);
+  img {
+    @include rect(100%,100%);
+  }
+}
+.hot {
+  @include rect(100%,1rem);
+  background: linear-gradient(to bottom,  #EEA2AD 0%,#fff 100%);
+  ul {
+    @include rect(100%,100%);
+    @include flexbox();
+    a {
+      @include flex();
+      @include flexbox();
+      @include rect(auto,100%);
+      @include flex-direction(column);
+      @include justify-content();
+      @include align-items();
+      color: #666;
+      img {
+        width: 0.5rem;
+        height: 0.5rem;
+      }
+      p {
+        font-size: 0.14rem;
+      }
+    }
+  }
+}
