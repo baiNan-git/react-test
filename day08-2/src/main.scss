@@ -1,0 +1,79 @@
+@import '@/lib/reset.scss';
+
+html, body, #root, .container {
+  @include rect(100%,100%);
+}
+.container {
+  @include flexbox();
+  @include flex-direction(column);
+  .box {
+    @include flexbox();
+    @include flex();
+    @include rect(100%,auto);
+    @include flex-direction(column);
+    .header {
+      @include rect(100%,0.44rem);
+      @include flexbox();
+      background: linear-gradient(to right,  orange 0%,#FFBBFF 100%);
+      .search {
+        @include flexbox();
+        @include align-items();
+        background: #fff;
+        @include rect(80%,70%);
+        border-radius: 0.15rem;
+        font-size: 0.14rem;
+        margin: 0.07rem 0.1rem 0 0.1rem;
+        color: #999;
+        .icon-xiazai17 {
+          margin: 0 0.1rem;
+        }
+      }
+      .cartshop {
+        @include flexbox();
+        @include align-items();
+        @include rect(15%,0.44rem);
+        span {
+          @include rect(100%,100%);
+          @include flexbox();
+          @include align-items();
+          margin-left: 0.05rem;
+        }
+        .icon-gouwuche {
+          font-size: 0.24rem;
+          color: #fff;
+        }
+      }
+    }
+    .content {
+      @include flex();  
+      @include rect(100%,auto);
+      overflow: auto;
+    }
+  }
+  .footer {
+    @include rect(100%,0.5rem);
+    background: #fff;
+    ul {
+      @include rect(100%,100%);
+      @include flexbox();
+      a {
+        @include flex();
+        @include flexbox();
+        @include rect(auto,100%);
+        @include flex-direction(column);
+        @include justify-content();
+        @include align-items();
+        color: #666;
+        span {
+          font-size: 0.22rem;
+        }
+        p {
+          font-size: 0.12rem;
+        }
+        &.active {
+          color: #f66;
+        }
+      }
+    }
+  }
+}
